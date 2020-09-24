@@ -7,6 +7,7 @@
 
 #include "view.h"
 #include "boarditem.h"
+#include "starfield.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -32,6 +33,7 @@ private:
 	QList<BoardItem *> board_items;
 	QSoundEffect *snd_click;
 	QLabel *label_moves;
+	Starfield *starfield;
 	static constexpr int board_size = 14;
 	static constexpr int item_size = 35;
 	static constexpr int max_moves = 25;

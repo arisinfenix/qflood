@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include <QRandomGenerator>
+#include <QStackedLayout>
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -10,9 +11,16 @@ MainWindow::MainWindow(QWidget *parent)
 	, colors({Qt::red, Qt::blue, Qt::yellow, Qt::green, Qt::white, Qt::magenta})
 	, snd_click(new QSoundEffect(this))
 	, label_moves(new QLabel)
+	, starfield(new Starfield)
 {
 	ui->setupUi(this);
-	this->setCentralWidget(view);
+
+	QStackedLayout *stackedLayout = new QStackedLayout;
+	stackedLayout->setStackingMode(QStackedLayout::StackAll);
+	this->centralWidget()->setLayout(stackedLayout);
+
+	stackedLayout->addWidget(view);
+	stackedLayout->addWidget(starfield);
 
 	// toolbar
 	connect(ui->actionNew, &QAction::triggered, this, &MainWindow::startNewGame);
@@ -23,8 +31,11 @@ MainWindow::MainWindow(QWidget *parent)
 
 	populateScene();
 
+	view->setStyleSheet("background: transparent");
 	view->setFrameStyle(QFrame::NoFrame);
 	view->setScene(scene);
+
+	starfield->show();
 	view->show();
 
 	startNewGame();
@@ -37,7 +48,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::populateScene()
 {
-	const int margin = 0;
+	const int margin = 6;
 
 	for (int i = 0; i < board_size; i++) {
 		for (int j = 0; j < board_size; j++) {

@@ -25,6 +25,8 @@ add_executable(qflood
     src/view.h
     src/boarditem.cpp
     src/boarditem.h
+    src/starfield.cpp
+    src/starfield.h
     src/resources.qrc
 )
 

@@ -1,5 +1,7 @@
 <RCC>
 <qresource>
 	<file>../sounds/click.wav</file>
+	<file>../shaders/vshader.glsl</file>
+	<file>../shaders/fshader.glsl</file>
 </qresource>
 </RCC>
