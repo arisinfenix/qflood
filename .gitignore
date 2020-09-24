@@ -1,0 +1,8 @@
+CMakeCache.txt
+CMakeFiles/
+CMakeLists.txt.user
+Makefile
+build/
+cmake_install.cmake
+qflood
+qflood_autogen/
