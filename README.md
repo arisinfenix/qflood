@@ -1,6 +1,8 @@
 # QFlood
 Just another flood it clone... with parallax starfield background.
 
+<img src="./share/screenshot.png" alt="">
+
 ## Build
 ```
 mkdir build
