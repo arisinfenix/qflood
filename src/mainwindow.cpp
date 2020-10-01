@@ -90,8 +90,8 @@ void MainWindow::floodFill(int i, int j, int old_color, int new_color)
 
 bool MainWindow::checkWinning()
 {
-	for (int i = 0; i < board_items.count() - 1; i++) {
-		if (board_items[i]->color != board_items[i + 1]->color) {
+	for (const auto &i : board_items) {
+		if (i->color != board_items.first()->color) {
 			return false;
 		}
 	}
@@ -112,7 +112,7 @@ void MainWindow::startNewGame()
 	win = false;
 	loose = false;
 
-	for (auto i : board_items) {
+	for (const auto &i : board_items) {
 		i->color = QRandomGenerator::global()->bounded(0, colors.count());
 		i->setBrush(colors[i->color]);
 	}
@@ -132,7 +132,7 @@ void MainWindow::onItemClicked(int color)
 
 	floodFill(0, 0, board_items[0]->color, color);
 
-	for (auto i : board_items) {
+	for (const auto &i : board_items) {
 		i->setBrush(colors[i->color]);
 	}
 
