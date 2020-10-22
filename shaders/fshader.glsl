@@ -1,8 +1,10 @@
+/*
+ *  based on https://www.shadertoy.com/view/WsfGDM
+ */
+
 #version 330 core
 uniform vec2 iResolution;
 uniform float iTime;
-
-// based on https://www.shadertoy.com/view/WsfGDM
 
 vec2 hash22(vec2 p)
 {
