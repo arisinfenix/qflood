@@ -1,5 +1,6 @@
 #include "starfield.h"
 #include <QOpenGLFunctions_3_3_Core>
+#include <QOpenGLVersionFunctionsFactory>
 #include <QRandomGenerator>
 
 Starfield::Starfield()
@@ -14,7 +15,7 @@ Starfield::Starfield()
 
 Starfield::~Starfield()
 {
-	QOpenGLFunctions_3_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_3_3_Core>();
+	auto *f = QOpenGLVersionFunctionsFactory::get<QOpenGLFunctions_3_3_Core>();
 
 	// Make sure the context is current before deleting resources
 	makeCurrent();
@@ -34,7 +35,7 @@ void Starfield::initializeGL()
 {
 	// Load shaders, initialize vertex data, etc.
 
-	QOpenGLFunctions_3_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_3_3_Core>();
+	auto *f = QOpenGLVersionFunctionsFactory::get<QOpenGLFunctions_3_3_Core>();
 
 	vShader = new QOpenGLShader(QOpenGLShader::Vertex);
 	vShader->compileSourceFile(":/shaders/vshader.glsl");
@@ -79,7 +80,7 @@ void Starfield::paintGL()
 {
 	// Draw the scene
 
-	QOpenGLFunctions_3_3_Core *f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_3_3_Core>();
+	auto *f = QOpenGLVersionFunctionsFactory::get<QOpenGLFunctions_3_3_Core>();
 
 	program->setUniformValue("iResolution", this->width(), this->height());
 

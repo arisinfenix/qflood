@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSoundEffect>
+//#include <QSoundEffect>	// Sound not available in Qt6 < 6.2
 #include <QLabel>
 
 #include "view.h"
@@ -31,7 +31,7 @@ private:
 	QGraphicsScene *scene;
 	QVector<QColor> colors;
 	QList<BoardItem *> board_items;
-	QSoundEffect *snd_click;
+	//QSoundEffect *snd_click;	// Sound not available in Qt6 < 6.2
 	QLabel *label_moves;
 	Starfield *starfield;
 	static constexpr int board_size = 14;

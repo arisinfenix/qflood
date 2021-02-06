@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.11)
 
 project(qflood LANGUAGES CXX)
 
@@ -14,7 +14,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
 add_compile_options(-Wall -Wextra)
 
-find_package(Qt5 COMPONENTS Widgets Multimedia REQUIRED)
+#find_package(Qt6 COMPONENTS OpenGLWidgets Multimedia REQUIRED)		// Multimedia not available in Qt6 < 6.2
+find_package(Qt6 COMPONENTS OpenGLWidgets REQUIRED)
 
 add_executable(qflood
     src/main.cpp
@@ -30,4 +31,5 @@ add_executable(qflood
     src/resources.qrc
 )
 
-target_link_libraries(qflood PRIVATE Qt5::Widgets Qt5::Multimedia)
+#target_link_libraries(qflood PRIVATE Qt6::OpenGLWidgets Qt6::Multimedia)	// Multimedia not available in Qt6 < 6.2
+target_link_libraries(qflood PRIVATE Qt6::OpenGLWidgets)

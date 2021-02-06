@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
 	, view(new View(this))
 	, scene(new QGraphicsScene(this))
 	, colors({Qt::red, Qt::blue, Qt::yellow, Qt::green, Qt::white, Qt::magenta})
-	, snd_click(new QSoundEffect(this))
+//	, snd_click(new QSoundEffect(this))	// Multimedia not available in Qt6 < 6.2
 	, label_moves(new QLabel)
 	, starfield(new Starfield)
 {
@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 	ui->statusbar->addWidget(label_moves);
 
-	snd_click->setSource(QUrl("qrc:/sounds/click.wav"));
+//	snd_click->setSource(QUrl("qrc:/sounds/click.wav"));	// Multimedia not available in Qt6 < 6.2
 
 	populateScene();
 
@@ -126,7 +126,7 @@ void MainWindow::onItemClicked(int color)
 		return;
 	}
 
-	snd_click->play();
+//	snd_click->play();	// Multimedia not available in Qt6 < 6.2
 
 	moves++;
 
